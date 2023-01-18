@@ -1,0 +1,39 @@
+
+$testColorOne: Blue;
+$backgroundColorOne: #237C95;
+$backgroundImage: 'maserati';
+
+@mixin mixinOne {
+  color: $testColorOne;
+}
+@mixin mixinTwo {
+  background-color: $backgroundColorOne;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+
+.taskOne p {
+  color: $testColorOne;
+}
+.taskTwo p {
+  @include mixinOne;
+}
+.taskThree {
+  .nestedDiv p {
+    color: red;
+  }
+}
+.taskFour {
+  @include mixinTwo;
+}
+.taskFive {
+  background-image: url('https://s3.amazonaws.com/bottega-devcamp/scss/cars/#{$backgroundImage}.jpg');
+  width: 300px;
+  height: 300px;
+  object-fit: fill;
+  // I have added this two properties because object-fit seems not to work properly in my browser.
+  background-size: contain;
+  background-repeat: no-repeat;
+}
